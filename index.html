@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educator Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ========================================== -->
+    <!-- 1. STYLES (CSS)                            -->
+    <!-- Custom CSS Variables, Layout, & Themes     -->
+    <!-- ========================================== -->
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --accent-color: #0f172a;
+            --accent-hover: #334155;
+            --highlight-bg: #f1f5f9;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --accent-color: #f8fafc;
+            --accent-hover: #cbd5e1;
+            --highlight-bg: #1e293b;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .custom-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-hover);
+        }
+
+        .custom-border {
+            border-color: var(--border-color);
+        }
+
+        .custom-button-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+        }
+        .custom-button-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-muted);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-slate-300 selection:text-slate-900">
+
+    <!-- ========================================== -->
+    <!-- 4. HTML SKELETON                           -->
+    <!-- Semantic HTML Containers with Target IDs   -->
+    <!-- ========================================== -->
+    
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-opacity-80 border-b custom-border transition-all">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#" id="nav-brand-name" class="font-bold text-lg tracking-tight hover:opacity-80 transition">
+                <!-- Populated by JS -->
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-slate-500 transition">About</a>
+                <a href="#projects" class="hover:text-slate-500 transition">Projects</a>
+                <a href="#testimonials" class="hover:text-slate-500 transition">Testimonials</a>
+                <a href="#contact" class="hover:text-slate-500 transition">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="p-2 text-xs rounded-lg custom-card hover:opacity-80 transition" title="Toggle Light/Dark Theme">
+                    <i id="theme-icon" class="fa-solid fa-moon"></i>
+                </button>
+                <!-- Data Editor Drawer Trigger -->
+                <button onclick="toggleEditorDrawer()" class="px-3 py-1.5 text-xs font-semibold rounded-lg custom-button-primary shadow-sm transition">
+                    <i class="fa-solid fa-code mr-1"></i> Edit Data
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 space-y-20 py-12">
+
+        <!-- 1. Hero Section Target -->
+        <section id="hero-section" class="pt-6 sm:pt-12">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- 2. About Me / Philosophy Target -->
+        <section id="about" class="pt-8">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- 3. Featured Projects Target -->
+        <section id="projects" class="pt-8">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- 4. Testimonials Target -->
+        <section id="testimonials" class="pt-8">
+            <!-- Populated by JS -->
+        </section>
+
+        <!-- 5. Contact Section Target -->
+        <section id="contact" class="pt-8 pb-12">
+            <!-- Populated by JS -->
+        </section>
+
+    </main>
+
+    <!-- Footer Target -->
+    <footer id="footer-section" class="border-t custom-border py-8 text-center text-xs opacity-70">
+        <!-- Populated by JS -->
+    </footer>
+
+    <!-- Artifact / Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden">
+        <div class="custom-card rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border">
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-xs opacity-60 hover:opacity-100 rounded-lg">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <span id="modal-category" class="inline-block px-3 py-1 text-xs font-medium rounded-full bg-slate-200 dark:bg-slate-700 mb-2"></span>
+            <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
+            <p id="modal-description" class="text-sm leading-relaxed mb-6 opacity-80"></p>
+            <div class="flex justify-end gap-3 pt-4 border-t custom-border">
+                <button onclick="closeModal()" class="px-4 py-2 text-xs font-medium rounded-lg custom-card">Close</button>
+                <a id="modal-link" href="#" target="_blank" class="px-4 py-2 text-xs font-medium rounded-lg custom-button-primary flex items-center gap-1">
+                    <span>View Artifact</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Editor Side Drawer (Allows raw JSON editing & export) -->
+    <div id="editor-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md custom-card shadow-2xl border-l transform translate-x-full transition-transform duration-300 overflow-y-auto p-6 hidden">
+        <div class="flex items-center justify-between pb-4 border-b custom-border mb-4">
+            <div>
+                <h3 class="font-bold text-base">Quick Content Editor</h3>
+                <p class="text-xs opacity-60">Edit the JSON object directly to update the site</p>
+            </div>
+            <button onclick="toggleEditorDrawer()" class="p-1.5 opacity-60 hover:opacity-100">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <textarea id="json-editor-textarea" class="w-full h-[60vh] font-mono text-xs p-3 rounded-lg border custom-border bg-slate-900 text-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
+        <div class="flex items-center justify-between gap-3 mt-4">
+            <button onclick="exportJSON()" class="px-3 py-2 text-xs font-medium rounded-lg custom-card flex items-center gap-1">
+                <i class="fa-solid fa-download"></i> Export JSON
+            </button>
+            <button onclick="applyJSONChanges()" class="px-4 py-2 text-xs font-semibold rounded-lg custom-button-primary">
+                Apply Changes
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. CONTENT / DATA MODEL (JS OBJECT)        -->
+    <!-- Modify this object to fill your content    -->
+    <!-- ========================================== -->
+    <script>
+        /**
+         * PORTFOLIO_CONTENT
+         * Centralized Data Store for all website text, items, and settings.
+         * Edit this object directly to update your site!
+         */
+        let PORTFOLIO_CONTENT = {
+            hero: {
+                name: "Jane Doe",
+                title: "High School STEM Educator & Curriculum Designer",
+                subtitle: "Empowering students through project-based learning, scientific inquiry, and inclusive digital classrooms.",
+                ctaPrimary: { text: "View Portfolio", link: "#projects" },
+                ctaSecondary: { text: "Download CV", link: "#" },
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+            },
+            about: {
+                sectionTitle: "Teaching Philosophy & Credentials",
+                philosophyTitle: "Core Philosophy",
+                philosophyText: "I believe in fostering a collaborative, student-centered classroom where critical thinking meets real-world application. Education should inspire curiosity, cultivate problem-solving skills, and accommodate diverse learning styles through modern educational technology and inclusive teaching practices.",
+                credentialsTitle: "Degrees & Certifications",
+                credentials: [
+                    { title: "M.Ed. in Curriculum & Instruction", issuer: "Stanford University (2020)", icon: "fa-graduation-cap" },
+                    { title: "B.S. in Biology & Secondary Education", issuer: "UC Berkeley (2018)", icon: "fa-award" },
+                    { title: "Google Certified Educator (Level 2)", issuer: "Google for Education", icon: "fa-certificate" },
+                    { title: "Regional STEM Educator Award", issuer: "Excellence in Teaching (2023)", icon: "fa-trophy" }
+                ]
+            },
+            projects: {
+                sectionTitle: "Featured Projects & Artifacts",
+                sectionSubtitle: "Selected curriculum design samples, case studies, and digital integration work.",
+                items: [
+                    {
+                        category: "Curriculum Design",
+                        title: "Interactive Climate Science Unit",
+                        gradeLevel: "Grade 9-10 Biology",
+                        description: "A 4-week inquiry-based biology unit focusing on local ecosystems, data analysis, and climate resilience.",
+                        link: "https://example.com/sample-unit",
+                        details: "Includes detailed lesson plans, rubrics, lab sheets, and slide decks aligned with NGSS standards."
+                    },
+                    {
+                        category: "Student Engagement",
+                        title: "Student-Led Robotics Showcase",
+                        gradeLevel: "Grade 11-12 STEM Elective",
+                        description: "A semester-long case study on facilitating hands-on engineering challenges and student presentations.",
+                        link: "https://example.com/robotics-case-study",
+                        details: "Resulted in a 35% increase in STEM elective enrollment, featuring positive feedback from parents and industry mentors."
+                    },
+                    {
+                        category: "EdTech Integration",
+                        title: "Hybrid STEM Resource Portal",
+                        gradeLevel: "All High School Grades",
+                        description: "A centralized digital hub with interactive lab simulations, quizzes, and multimedia resources.",
+                        link: "https://example.com/edtech-portal",
+                        details: "Built with accessibility in mind, incorporating screen-reader optimization, multilingual captions, and self-paced quizzes."
+                    }
+                ]
+            },
+            testimonials: {
+                sectionTitle: "Testimonials & Recommendations",
+                sectionSubtitle: "Feedback from colleagues, administrators, and students.",
+                items: [
+                    {
+                        quote: "Jane's curriculum design turned complex scientific principles into engaging, hands-on experiences for our students.",
+                        author: "Dr. Robert Vance",
+                        role: "High School Principal"
+                    },
+                    {
+                        quote: "Her passion for teaching and ability to integrate digital tools seamlessly set a high benchmark for our entire department.",
+                        author: "Sarah Jenkins",
+                        role: "Department Chair"
+                    },
+                    {
+                        quote: "Ms. Doe made biology my favorite class. She always encouraged us to ask questions and think for ourselves.",
+                        author: "Alex M.",
+                        role: "Former Student"
+                    }
+                ]
+            },
+            contact: {
+                sectionTitle: "Get in Touch",
+                sectionSubtitle: "Interested in collaboration, curriculum consulting, or speaking engagements?",
+                email: "jane.doe@example.com",
+                linkedin: "https://linkedin.com/in/example",
+                formPlaceholderName: "Your Name",
+                formPlaceholderEmail: "Your Email",
+                formPlaceholderMessage: "Your Message..."
+            }
+        };
+    </script>
+
+    <!-- ========================================== -->
+    <!-- 3. LOGIC & RENDERING ENGINE (JS)           -->
+    <!-- Rendering logic, state management & events -->
+    <!-- ========================================== -->
+    <script>
+        /**
+         * Main Render Function
+         * Takes `PORTFOLIO_CONTENT` and populates the target DOM elements
+         */
+        function renderSiteContent() {
+            const content = PORTFOLIO_CONTENT;
+
+            // Brand / Navigation
+            document.getElementById('nav-brand-name').textContent = content.hero.name;
+
+            // 1. Render Hero Section
+            document.getElementById('hero-section').innerHTML = `
+                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+                    <div class="flex-1 space-y-6 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium custom-card">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Educator & Educator Portfolio
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                            ${content.hero.name}
+                            <span class="block text-xl sm:text-2xl font-medium opacity-70 mt-2">${content.hero.title}</span>
+                        </h1>
+                        <p class="text-base sm:text-lg opacity-80 max-w-xl leading-relaxed">${content.hero.subtitle}</p>
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                            <a href="${content.hero.ctaPrimary.link}" class="px-6 py-3 text-sm font-medium rounded-xl custom-button-primary shadow-sm transition hover:scale-[1.02]">
+                                ${content.hero.ctaPrimary.text}
+                            </a>
+                            <a href="${content.hero.ctaSecondary.link}" onclick="handleCvDownload(event)" class="px-6 py-3 text-sm font-medium rounded-xl custom-card hover:opacity-80 transition flex items-center gap-2">
+                                <i class="fa-solid fa-download text-xs"></i> ${content.hero.ctaSecondary.text}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto flex justify-center">
+                        <img src="${content.hero.image}" alt="${content.hero.name}" class="w-56 h-56 sm:w-72 sm:h-72 object-cover rounded-2xl border-4 custom-border shadow-md">
+                    </div>
+                </div>
+            `;
+
+            // 2. Render About & Credentials
+            document.getElementById('about').innerHTML = `
+                <div class="border-t custom-border pt-12">
+                    <h2 class="text-2xl font-bold tracking-tight mb-6">${content.about.sectionTitle}</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                        <div class="md:col-span-7 custom-card p-6 sm:p-8 rounded-2xl">
+                            <h3 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">${content.about.philosophyTitle}</h3>
+                            <p class="text-base sm:text-lg leading-relaxed opacity-90">${content.about.philosophyText}</p>
+                        </div>
+                        <div class="md:col-span-5 space-y-4">
+                            <h3 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-1">${content.about.credentialsTitle}</h3>
+                            <div class="space-y-3">
+                                ${content.about.credentials.map(c => `
+                                    <div class="custom-card p-4 rounded-xl flex items-center space-x-3">
+                                        <div class="p-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 opacity-80">
+                                            <i class="fa-solid ${c.icon} text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-sm">${c.title}</h4>
+                                            <p class="text-xs opacity-60">${c.issuer}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // 3. Render Projects & Artifacts
+            document.getElementById('projects').innerHTML = `
+                <div class="border-t custom-border pt-12">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold tracking-tight">${content.projects.sectionTitle}</h2>
+                        <p class="text-sm opacity-60 mt-1">${content.projects.sectionSubtitle}</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        ${content.projects.items.map((p, index) => `
+                            <div class="custom-card rounded-2xl p-6 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex items-center justify-between gap-2 mb-3">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-200 dark:bg-slate-700">
+                                            ${p.category}
+                                        </span>
+                                        <span class="text-xs opacity-60">${p.gradeLevel}</span>
+                                    </div>
+                                    <h3 class="font-bold text-lg mb-2">${p.title}</h3>
+                                    <p class="text-xs opacity-80 leading-relaxed mb-4">${p.description}</p>
+                                </div>
+                                <div class="pt-4 border-t custom-border flex items-center justify-between">
+                                    <button onclick="openModal(${index})" class="text-xs font-semibold hover:underline flex items-center gap-1">
+                                        View Case Details <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // 4. Render Testimonials
+            document.getElementById('testimonials').innerHTML = `
+                <div class="border-t custom-border pt-12">
+                    <div class="mb-8 text-center max-w-xl mx-auto">
+                        <h2 class="text-2xl font-bold tracking-tight">${content.testimonials.sectionTitle}</h2>
+                        <p class="text-sm opacity-60 mt-1">${content.testimonials.sectionSubtitle}</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        ${content.testimonials.items.map(t => `
+                            <div class="custom-card p-6 rounded-2xl flex flex-col justify-between">
+                                <p class="text-xs sm:text-sm italic opacity-80 mb-6 leading-relaxed">"${t.quote}"</p>
+                                <div>
+                                    <h4 class="font-bold text-xs">${t.author}</h4>
+                                    <p class="text-[11px] opacity-60">${t.role}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            // 5. Render Contact Section
+            document.getElementById('contact').innerHTML = `
+                <div class="border-t custom-border pt-12">
+                    <div class="max-w-2xl mx-auto text-center space-y-8">
+                        <div>
+                            <h2 class="text-2xl font-bold tracking-tight">${content.contact.sectionTitle}</h2>
+                            <p class="text-sm opacity-60 mt-1">${content.contact.sectionSubtitle}</p>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <a href="mailto:${content.contact.email}" class="px-4 py-2 rounded-xl custom-card text-xs font-medium flex items-center gap-2 hover:opacity-80 transition">
+                                <i class="fa-solid fa-envelope"></i> ${content.contact.email}
+                            </a>
+                            <a href="${content.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl custom-card text-xs font-medium flex items-center gap-2 hover:opacity-80 transition">
+                                <i class="fa-brands fa-linkedin"></i> LinkedIn
+                            </a>
+                        </div>
+
+                        <form onsubmit="handleFormSubmit(event)" class="custom-card p-6 sm:p-8 rounded-2xl text-left space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="text" required placeholder="${content.contact.formPlaceholderName}" class="w-full px-4 py-2.5 text-xs rounded-xl border custom-border bg-transparent focus:outline-none focus:ring-1 focus:ring-slate-400">
+                                <input type="email" required placeholder="${content.contact.formPlaceholderEmail}" class="w-full px-4 py-2.5 text-xs rounded-xl border custom-border bg-transparent focus:outline-none focus:ring-1 focus:ring-slate-400">
+                            </div>
+                            <textarea rows="4" required placeholder="${content.contact.formPlaceholderMessage}" class="w-full px-4 py-2.5 text-xs rounded-xl border custom-border bg-transparent focus:outline-none focus:ring-1 focus:ring-slate-400"></textarea>
+                            <button type="submit" class="w-full py-3 text-xs font-semibold rounded-xl custom-button-primary transition shadow-sm">
+                                Send Message
+                            </button>
+                        </form>
+                        <div id="form-message" class="hidden p-3 rounded-xl bg-emerald-100 text-emerald-800 text-xs">
+                            Message sent successfully!
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Footer
+            document.getElementById('footer-section').innerHTML = `
+                <p>&copy; ${new Date().getFullYear()} ${content.hero.name}. All rights reserved.</p>
+            `;
+        }
+
+        // Project Modal Logic
+        function openModal(index) {
+            const item = PORTFOLIO_CONTENT.projects.items[index];
+            document.getElementById('modal-category').textContent = item.category;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-description').textContent = item.details || item.description;
+            document.getElementById('modal-link').href = item.link;
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Form Submit Simulation
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('form-message');
+            msg.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => msg.classList.add('hidden'), 4000);
+        }
+
+        // CV Download Simulation
+        function handleCvDownload(e) {
+            e.preventDefault();
+            const text = `CV - ${PORTFOLIO_CONTENT.hero.name}\n${PORTFOLIO_CONTENT.hero.title}\nContact: ${PORTFOLIO_CONTENT.contact.email}`;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${PORTFOLIO_CONTENT.hero.name.replace(/\s+/g, '_')}_CV.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Theme Toggle (Light / Dark Mode)
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun';
+            } else {
+                icon.className = 'fa-solid fa-moon';
+            }
+        }
+
+        // Drawer & Quick Content Editor Logic
+        function toggleEditorDrawer() {
+            const drawer = document.getElementById('editor-drawer');
+            const textarea = document.getElementById('json-editor-textarea');
+            if (drawer.classList.contains('hidden')) {
+                textarea.value = JSON.stringify(PORTFOLIO_CONTENT, null, 2);
+                drawer.classList.remove('hidden');
+                setTimeout(() => drawer.classList.remove('translate-x-full'), 10);
+            } else {
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => drawer.classList.add('hidden'), 300);
+            }
+        }
+
+        function applyJSONChanges() {
+            try {
+                const textarea = document.getElementById('json-editor-textarea');
+                PORTFOLIO_CONTENT = JSON.parse(textarea.value);
+                renderSiteContent();
+                toggleEditorDrawer();
+            } catch (err) {
+                alert("Invalid JSON format. Please check your syntax.");
+            }
+        }
+
+        function exportJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(PORTFOLIO_CONTENT, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", "portfolio_content.json");
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+        }
+
+        // Initialize Application
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSiteContent();
+        });
+    </script>
+</body>
+</html>
