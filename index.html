@@ -87,11 +87,6 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-slate-300 selection:text-slate-900">
 
-    <!-- ========================================== -->
-    <!-- 4. HTML SKELETON                           -->
-    <!-- Semantic HTML Containers with Target IDs   -->
-    <!-- ========================================== -->
-    
     <!-- Navigation Bar -->
     <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-opacity-80 border-b custom-border transition-all">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
@@ -110,10 +105,6 @@
                 <!-- Theme Toggle Button -->
                 <button onclick="toggleTheme()" class="p-2 text-xs rounded-lg custom-card hover:opacity-80 transition" title="Toggle Light/Dark Theme">
                     <i id="theme-icon" class="fa-solid fa-moon"></i>
-                </button>
-                <!-- Data Editor Drawer Trigger -->
-                <button onclick="toggleEditorDrawer()" class="px-3 py-1.5 text-xs font-semibold rounded-lg custom-button-primary shadow-sm transition">
-                    <i class="fa-solid fa-code mr-1"></i> Edit Data
                 </button>
             </div>
         </div>
@@ -160,7 +151,7 @@
             <button onclick="closeModal()" class="absolute top-4 right-4 p-2 text-xs opacity-60 hover:opacity-100 rounded-lg">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            <span id="modal-category" class="inline-block px-3 py-1 text-xs font-medium rounded-full bg-slate-200 dark:bg-slate-700 mb-2"></span>
+            <span id="modal-category" class="inline-block px-3 py-1 text-xs font-semibold tracking-wide rounded-full bg-slate-800 text-slate-100 dark:bg-slate-700 dark:text-slate-100 border border-slate-600 mb-2"></span>
             <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
             <p id="modal-description" class="text-sm leading-relaxed mb-6 opacity-80"></p>
             <div class="flex justify-end gap-3 pt-4 border-t custom-border">
@@ -169,28 +160,6 @@
                     <span>View Artifact</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
             </div>
-        </div>
-    </div>
-
-    <!-- Data Editor Side Drawer (Allows raw JSON editing & export) -->
-    <div id="editor-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md custom-card shadow-2xl border-l transform translate-x-full transition-transform duration-300 overflow-y-auto p-6 hidden">
-        <div class="flex items-center justify-between pb-4 border-b custom-border mb-4">
-            <div>
-                <h3 class="font-bold text-base">Quick Content Editor</h3>
-                <p class="text-xs opacity-60">Edit the JSON object directly to update the site</p>
-            </div>
-            <button onclick="toggleEditorDrawer()" class="p-1.5 opacity-60 hover:opacity-100">
-                <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-        </div>
-        <textarea id="json-editor-textarea" class="w-full h-[60vh] font-mono text-xs p-3 rounded-lg border custom-border bg-slate-900 text-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500"></textarea>
-        <div class="flex items-center justify-between gap-3 mt-4">
-            <button onclick="exportJSON()" class="px-3 py-2 text-xs font-medium rounded-lg custom-card flex items-center gap-1">
-                <i class="fa-solid fa-download"></i> Export JSON
-            </button>
-            <button onclick="applyJSONChanges()" class="px-4 py-2 text-xs font-semibold rounded-lg custom-button-primary">
-                Apply Changes
-            </button>
         </div>
     </div>
 
@@ -206,23 +175,22 @@
          */
         let PORTFOLIO_CONTENT = {
             hero: {
-                name: "Jane Doe",
-                title: "High School STEM Educator & Curriculum Designer",
-                subtitle: "Empowering students through project-based learning, scientific inquiry, and inclusive digital classrooms.",
+                name: "Jazilul Athoya",
+                title: "Mentor at Apple Developer Academy @ BINUS",
+                subtitle: "Empowering learners to embrace the process—experimental, intentional, and resilient.",
                 ctaPrimary: { text: "View Portfolio", link: "#projects" },
                 ctaSecondary: { text: "Download CV", link: "#" },
-                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
+                image:"https://media.licdn.com/dms/image/v2/D5603AQHhO-B1e2QxwA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1701925703251?e=1792022400&v=beta&t=OmyRkokQOUTvwU0UlWNUXVnQtBf1r-JC2eLIPdSPA0c"
             },
             about: {
                 sectionTitle: "Teaching Philosophy & Credentials",
                 philosophyTitle: "Core Philosophy",
-                philosophyText: "I believe in fostering a collaborative, student-centered classroom where critical thinking meets real-world application. Education should inspire curiosity, cultivate problem-solving skills, and accommodate diverse learning styles through modern educational technology and inclusive teaching practices.",
+                philosophyText: "I believe learning is most effective when it is hands-on, intentional, experimental, and reflective. By actively immersing myself in my students' learning journey, I model what growth looks like in real time. Through daily transparency in my own creative and analytical processes, paired with a resilient, growth-oriented mindset, I guide learners to navigate challenge with confidence and trust in their own capacity to learn.",
                 credentialsTitle: "Degrees & Certifications",
                 credentials: [
-                    { title: "M.Ed. in Curriculum & Instruction", issuer: "Stanford University (2020)", icon: "fa-graduation-cap" },
-                    { title: "B.S. in Biology & Secondary Education", issuer: "UC Berkeley (2018)", icon: "fa-award" },
-                    { title: "Google Certified Educator (Level 2)", issuer: "Google for Education", icon: "fa-certificate" },
-                    { title: "Regional STEM Educator Award", issuer: "Excellence in Teaching (2023)", icon: "fa-trophy" }
+                    { title: "S.Kom. in Computer Science", issuer: "Universital Gadjah Mada (2014)", icon: "fa-graduation-cap" },
+                    { title: "M.Sc. in Computer Science", issuer: "Seoul National University of Science (2018)", icon: "fa-award" },
+                    { title: "Apple Certified Trainer for App Development with Swift", issuer: "Apple Training (2023)", icon: "fa-certificate" },
                 ]
             },
             projects: {
@@ -231,56 +199,48 @@
                 items: [
                     {
                         category: "Curriculum Design",
-                        title: "Interactive Climate Science Unit",
-                        gradeLevel: "Grade 9-10 Biology",
-                        description: "A 4-week inquiry-based biology unit focusing on local ecosystems, data analysis, and climate resilience.",
-                        link: "https://example.com/sample-unit",
-                        details: "Includes detailed lesson plans, rubrics, lab sheets, and slide decks aligned with NGSS standards."
+                        title: "Interactive Web Dev Programming for Newcomer",
+                        gradeLevel: "Grade 11",
+                        description: "A 30-session inquiry-based html coding focusing on coding for first time, integrating multimedia, and deploy into web app.",
+                        link: "-",
+                        details: "Resulted in a high engagement students in class"
                     },
                     {
                         category: "Student Engagement",
-                        title: "Student-Led Robotics Showcase",
-                        gradeLevel: "Grade 11-12 STEM Elective",
-                        description: "A semester-long case study on facilitating hands-on engineering challenges and student presentations.",
-                        link: "https://example.com/robotics-case-study",
-                        details: "Resulted in a 35% increase in STEM elective enrollment, featuring positive feedback from parents and industry mentors."
-                    },
-                    {
-                        category: "EdTech Integration",
-                        title: "Hybrid STEM Resource Portal",
-                        gradeLevel: "All High School Grades",
-                        description: "A centralized digital hub with interactive lab simulations, quizzes, and multimedia resources.",
-                        link: "https://example.com/edtech-portal",
-                        details: "Built with accessibility in mind, incorporating screen-reader optimization, multilingual captions, and self-paced quizzes."
+                        title: "Game Development - Game Jam",
+                        gradeLevel: "College student - Game Elective",
+                        description: "A week case study on developing and hands-on developing a game challenges and student showcase.",
+                        link: "-",
+                        details: "Resulted in a highly motivated learning and safe space to fail."
                     }
                 ]
             },
             testimonials: {
                 sectionTitle: "Testimonials & Recommendations",
-                sectionSubtitle: "Feedback from colleagues, administrators, and students.",
+                sectionSubtitle: "Feedback from colleagues, administrators, and mentees.",
                 items: [
                     {
-                        quote: "Jane's curriculum design turned complex scientific principles into engaging, hands-on experiences for our students.",
-                        author: "Dr. Robert Vance",
-                        role: "High School Principal"
+                        quote: "I like mentors that guides through the problem-solving process instead of simply telling what to do. A really good mentor to discuss with.",
+                        author: "Revan",
+                        role: "Former Mentee"
                     },
                     {
-                        quote: "Her passion for teaching and ability to integrate digital tools seamlessly set a high benchmark for our entire department.",
-                        author: "Sarah Jenkins",
-                        role: "Department Chair"
+                        quote: "A great tech mentor to have during challenging ideation moments. Helps the team understand what needs to be done, provides clear direction, and keeps everyone composed when facing technical uncertainty. Calm and composed during each standup sessions making it easy to state our problem and understanding the suggestion given for the probelm.",
+                        author: "Sam",
+                        role: "Former Mentee"
                     },
                     {
-                        quote: "Ms. Doe made biology my favorite class. She always encouraged us to ask questions and think for ourselves.",
-                        author: "Alex M.",
-                        role: "Former Student"
+                        quote: "Your help when our team crash out is really helpful. You can direct us to think what we should and ignore what we shouldn't.",
+                        author: "Valen",
+                        role: "Former Mentee"
                     }
                 ]
             },
             contact: {
                 sectionTitle: "Get in Touch",
                 sectionSubtitle: "Interested in collaboration, curriculum consulting, or speaking engagements?",
-                email: "jane.doe@example.com",
-                linkedin: "https://linkedin.com/in/example",
+                email: "athoyaa@gmail.com",
+                linkedin: "https://www.linkedin.com/in/jazilul-athoya-b2709a99/",
                 formPlaceholderName: "Your Name",
                 formPlaceholderEmail: "Your Email",
                 formPlaceholderMessage: "Your Message..."
@@ -307,10 +267,6 @@
             document.getElementById('hero-section').innerHTML = `
                 <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
                     <div class="flex-1 space-y-6 text-center md:text-left">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium custom-card">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            Educator & Educator Portfolio
-                        </div>
                         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
                             ${content.hero.name}
                             <span class="block text-xl sm:text-2xl font-medium opacity-70 mt-2">${content.hero.title}</span>
@@ -372,7 +328,7 @@
                             <div class="custom-card rounded-2xl p-6 flex flex-col justify-between">
                                 <div>
                                     <div class="flex items-center justify-between gap-2 mb-3">
-                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-200 dark:bg-slate-700">
+                                        <span class="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-800 text-slate-100 dark:bg-slate-700 dark:text-slate-100 border border-slate-600">
                                             ${p.category}
                                         </span>
                                         <span class="text-xs opacity-60">${p.gradeLevel}</span>
@@ -498,41 +454,6 @@
             } else {
                 icon.className = 'fa-solid fa-moon';
             }
-        }
-
-        // Drawer & Quick Content Editor Logic
-        function toggleEditorDrawer() {
-            const drawer = document.getElementById('editor-drawer');
-            const textarea = document.getElementById('json-editor-textarea');
-            if (drawer.classList.contains('hidden')) {
-                textarea.value = JSON.stringify(PORTFOLIO_CONTENT, null, 2);
-                drawer.classList.remove('hidden');
-                setTimeout(() => drawer.classList.remove('translate-x-full'), 10);
-            } else {
-                drawer.classList.add('translate-x-full');
-                setTimeout(() => drawer.classList.add('hidden'), 300);
-            }
-        }
-
-        function applyJSONChanges() {
-            try {
-                const textarea = document.getElementById('json-editor-textarea');
-                PORTFOLIO_CONTENT = JSON.parse(textarea.value);
-                renderSiteContent();
-                toggleEditorDrawer();
-            } catch (err) {
-                alert("Invalid JSON format. Please check your syntax.");
-            }
-        }
-
-        function exportJSON() {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(PORTFOLIO_CONTENT, null, 2));
-            const dlAnchor = document.createElement('a');
-            dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", "portfolio_content.json");
-            document.body.appendChild(dlAnchor);
-            dlAnchor.click();
-            dlAnchor.remove();
         }
 
         // Initialize Application
